@@ -1,5 +1,5 @@
 {
-    "name": "server",
+    "name": "leave-manager-backend",
     "version": "1.0.0",
     "description": "lms backend",
     "main": "src/app.ts",
