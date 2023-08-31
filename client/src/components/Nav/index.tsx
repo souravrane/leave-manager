@@ -7,9 +7,17 @@ import Image from "next/image";
 
 const Nav = () => {
     const [isOpenHamMenu, setIsOpenHamMenu] = useState(false);
-    const isUserLoggedIn = false;
+    const [hamClasses, setHamClasses] = useState(
+        `${styles.bar} ${styles.closedMenu}`
+    );
+    const isUserLoggedIn = true;
 
     const toggleHamMenu = () => {
+        if (!isOpenHamMenu) {
+            setHamClasses(`${styles.bar} ${styles.openMenu}`);
+        } else {
+            setHamClasses(`${styles.bar} ${styles.closeMenu}`);
+        }
         setIsOpenHamMenu((prev) => !prev);
     };
 
@@ -53,9 +61,9 @@ const Nav = () => {
                 )}
 
                 <div className={styles.hamburger} onClick={toggleHamMenu}>
-                    <span className={styles.bar}></span>
-                    <span className={styles.bar}></span>
-                    <span className={styles.bar}></span>
+                    <span className={hamClasses}></span>
+                    <span className={hamClasses}></span>
+                    <span className={hamClasses}></span>
                 </div>
             </nav>
         </header>
