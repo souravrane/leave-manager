@@ -1,0 +1,28 @@
+.container {
+    padding: 1rem;
+}
+
+.login {
+    position: absolute;
+    background: var(--secondary);
+    max-width: 500px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 1rem auto;
+    padding: 3rem 2rem;
+}
+
+.heading {
+    color: var(--primary);
+    text-align: center;
+}
+
+.input_elements {
+    margin: 1.5rem 0;
+}
+
+.btn {
+    text-align: center;
+}
