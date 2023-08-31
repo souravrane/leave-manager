@@ -10,7 +10,7 @@ const Nav = () => {
     const [hamClasses, setHamClasses] = useState(
         `${styles.bar} ${styles.closedMenu}`
     );
-    const isUserLoggedIn = true;
+    const [isUserLoggedIn, setUserLoggedIn] = useState(false);
 
     const toggleHamMenu = () => {
         if (!isOpenHamMenu) {
@@ -34,7 +34,7 @@ const Nav = () => {
                     />
                 </Link>
 
-                {isUserLoggedIn ? (
+                {isUserLoggedIn && (
                     <ul
                         className={`${styles.nav_menu} ${
                             isOpenHamMenu && styles.active
@@ -56,8 +56,6 @@ const Nav = () => {
                             </Link>
                         </li>
                     </ul>
-                ) : (
-                    <div className={styles.headline}>Leave Manager</div>
                 )}
 
                 <div className={styles.hamburger} onClick={toggleHamMenu}>
