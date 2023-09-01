@@ -1,0 +1,102 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5rem;
+    padding: 0.5rem 1.5rem;
+    background: var(--secondary);
+    color: var(--primary);
+    opacity: 1;
+    border-bottom: 1px solid black;
+}
+
+.nav_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_item {
+    margin-left: 3rem;
+}
+.nav_item:hover {
+    text-decoration: underline;
+}
+
+.sidebar {
+    position: relative;
+    height: 500px;
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+    background-color: var(--secondary);
+    cursor: pointer;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary);
+}
+
+.headline {
+    font-size: 1.5rem;
+}
+
+.bar.openMenu:nth-child(1) {
+    transform:  rotate(45deg) translate(8px, 7px);
+    transition: ease-out 0.5s;
+}
+
+.bar.openMenu:nth-child(2) {
+    transform:  translate(2rem, 0);
+    transition: ease-out 0.5s;
+}
+
+.bar.openMenu:nth-child(3) {
+    transform:  rotate(-45deg) translate(4px, -4px);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.bar.closeMenu {
+    transform: rotate(0) translate(0);
+    transition: ease-in 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .nav_menu {
+        position: fixed;
+        left: 100%;
+        top: 5.4rem;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--secondary);
+        transition: 0.5s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--primary);
+        justify-content: flex-start;
+    }
+
+    .active {
+        left: 0;
+    }
+
+    .nav_item {
+        margin: 1.5rem auto;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}

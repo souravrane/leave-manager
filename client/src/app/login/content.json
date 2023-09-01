@@ -1,0 +1,8 @@
+{
+    "heading": "Log in to Leave Manager",
+    "labels": {
+        "email": "Email address",
+        "password": "Password",
+        "loginBtn": "Sign In"
+    }
+}

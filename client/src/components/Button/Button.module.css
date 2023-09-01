@@ -1,0 +1,23 @@
+.btn {
+    min-width: 15rem;
+    height: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary {
+    color: var(--secondary);
+    background: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.primary:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 321px) {
+    .btn {
+        min-width: 0;
+        width: 100%;
+    }
+}
