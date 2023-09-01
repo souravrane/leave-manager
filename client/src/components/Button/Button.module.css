@@ -14,3 +14,10 @@
 .primary:hover {
     opacity: 0.7;
 }
+
+@media screen and (max-width: 321px) {
+    .btn {
+        min-width: 0;
+        width: 100%;
+    }
+}
