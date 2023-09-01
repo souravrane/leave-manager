@@ -1,16 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./Nav.module.css";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { useGlobalAuthContext } from "@contextAPI/authContext";
+
+import styles from "./Nav.module.css";
 
 const Nav = () => {
+    const { push } = useRouter();
+    const { isUserLoggedIn, setIsUserLoggedIn } = useGlobalAuthContext();
+
     const [isOpenHamMenu, setIsOpenHamMenu] = useState(false);
     const [hamClasses, setHamClasses] = useState(
         `${styles.bar} ${styles.closedMenu}`
     );
-    const [isUserLoggedIn, setUserLoggedIn] = useState(false);
 
     const toggleHamMenu = () => {
         if (!isOpenHamMenu) {
@@ -19,6 +26,11 @@ const Nav = () => {
             setHamClasses(`${styles.bar} ${styles.closeMenu}`);
         }
         setIsOpenHamMenu((prev) => !prev);
+    };
+
+    const signOut = () => {
+        setIsUserLoggedIn(false);
+        push("/login");
     };
 
     return (
@@ -35,34 +47,43 @@ const Nav = () => {
                 </Link>
 
                 {isUserLoggedIn && (
-                    <ul
-                        className={`${styles.nav_menu} ${
-                            isOpenHamMenu && styles.active
-                        }`}
-                    >
-                        <li className={styles.nav_item}>
-                            <Link href="/" className={styles.nav_link}>
-                                My profile
-                            </Link>
-                        </li>
-                        <li className={styles.nav_item}>
-                            <Link href="/" className={styles.nav_link}>
-                                Apply for leave
-                            </Link>
-                        </li>
-                        <li className={styles.nav_item}>
-                            <Link href="/" className={styles.nav_link}>
-                                Sign Out
-                            </Link>
-                        </li>
-                    </ul>
-                )}
+                    <>
+                        <ul
+                            className={`${styles.nav_menu} ${
+                                isOpenHamMenu && styles.active
+                            }`}
+                        >
+                            <li className={styles.nav_item}>
+                                <Link href="/" className={styles.nav_link}>
+                                    Dashboard
+                                </Link>
+                            </li>
+                            <li className={styles.nav_item}>
+                                <Link href="/" className={styles.nav_link}>
+                                    Apply for leave
+                                </Link>
+                            </li>
+                            <li className={styles.nav_item}>
+                                <Link
+                                    href="/"
+                                    className={styles.nav_link}
+                                    onClick={signOut}
+                                >
+                                    Sign Out
+                                </Link>
+                            </li>
+                        </ul>
 
-                <div className={styles.hamburger} onClick={toggleHamMenu}>
-                    <span className={hamClasses}></span>
-                    <span className={hamClasses}></span>
-                    <span className={hamClasses}></span>
-                </div>
+                        <div
+                            className={styles.hamburger}
+                            onClick={toggleHamMenu}
+                        >
+                            <span className={hamClasses}></span>
+                            <span className={hamClasses}></span>
+                            <span className={hamClasses}></span>
+                        </div>
+                    </>
+                )}
             </nav>
         </header>
     );
