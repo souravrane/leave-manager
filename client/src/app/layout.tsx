@@ -2,7 +2,7 @@ import Nav from "@components/Nav";
 import "@styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import AuthContext from "@contextAPI/authContext";
+import { GlobalAuthContextProvider } from "@contextAPI/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +18,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <AuthContext>
-                <body className={inter.className}>
+            <body className={inter.className}>
+                <GlobalAuthContextProvider>
                     <Nav />
                     {children}
-                </body>
-            </AuthContext>
+                </GlobalAuthContextProvider>
+            </body>
         </html>
     );
 }
